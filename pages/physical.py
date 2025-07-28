@@ -173,7 +173,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
     if "language" not in st.session_state:
-        st.session_state.language = "English"
+        st.session_state.language = "Tamil"
     if "selected_organ" not in st.session_state:
         st.session_state.selected_organ = None
 
@@ -183,13 +183,13 @@ def main():
         if st.button("🧹 Clear Chat"):
             st.session_state.chat_history = []
             st.session_state.selected_organ = None
-            st.session_state.language = "English"
+            st.session_state.language = "Tamil"
             st.rerun()
 
     with col_right:
         st.session_state.language = st.radio(
             "Choice Your Language", 
-            ["English", "Tamil"], 
+            ["Tamil", "English"], 
             horizontal=True, key="language_radio")
     
     change_radio_option_size("English","30px")
