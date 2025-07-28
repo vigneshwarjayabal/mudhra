@@ -3,6 +3,7 @@ import pandas as pd
 import re
 import os
 import base64
+import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="Mudhra Healing App",
@@ -95,19 +96,12 @@ def set_bg():
             border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.03);
         }}
-
-        div.stRadio label {{
-        font-size: 30px;
-        color: #FAFAD2;
-        margin-bottom: 5px;
-    }}
-
-    /* Style the radio options */
-    div.stRadio > div {{
-        display: flex;
-        justify-content: flex-end;
-        gap: 20px;
-    }}
+    div.stRadio > label > div > p {{
+            font-size : 22px;
+            color:#FAFAD2;
+            font-weight: 700;
+            text-align: center;
+        }}
 
     .content-box {{
             background: rgba(255, 255, 255, 0.07);
@@ -153,6 +147,19 @@ def set_bg():
         unsafe_allow_html=True
     )
 
+def change_radio_option_size(option_text,new_size='20px'):
+    js = f"""
+            <script>
+            const elems = window.parent.document.querySelectorAll('*');
+            elems.forEach(el => {{
+            if (el.innerText === '{option_text}') {{
+            el.style.fontSize = '{new_size}';
+            }}
+            }}) ;
+            </script>
+            """
+    components.html(js, height=0, width=0)
+
 
 def main():
 
@@ -184,6 +191,9 @@ def main():
             "Choice Your Language", 
             ["English", "Tamil"], 
             horizontal=True, key="language_radio")
+    
+    change_radio_option_size("English","30px")
+    change_radio_option_size("Tamil","30px")
 
     is_tamil = st.session_state.language == "Tamil"
 
@@ -296,6 +306,17 @@ def main():
 
         else:
             st.markdown(f"<div style='color:white; font-size: 18px;'>{msg}</div>", unsafe_allow_html=True)
+            
+    st.markdown("<div id='bottom-marker'></div>", unsafe_allow_html=True)
+
+    scroll_script = """
+<script>
+const marker = window.parent.document.getElementById("bottom-marker");
+if(marker){ marker.scrollIntoView({ behavior: "smooth", block: "start" }); }
+</script>
+"""
+    components.html(scroll_script, height=0)
+
     
 
 
