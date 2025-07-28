@@ -33,11 +33,11 @@ def extract_organs(user_input, organ_list, is_tamil=False):
 
 def get_image_path(finger_name):
     finger_map = {
-        "கட்டைவிரல்": "thumb finger",
+        "பெருவிரல்": "thumb finger",
         "ஆள்காட்டி விரல்": "index finger",
-        "நடுத்துவிரல்": "middle finger",
+        "நடு விரல்": "middle finger",
         "மோதிர விரல்": "ring finger",
-        "சுட்டுவிரல்": "little finger",
+        "சுண்டு விரல்": "little finger",
     }
 
     mapped = finger_map.get(finger_name.strip(), finger_name.lower())
@@ -229,11 +229,11 @@ def main():
 
             if organ_en:
                 finger = eng_dict[organ_en]
-                response = f"The mudra finger for **{organ_en.title()}** is Left Hand **{finger}**."
+                response = f"The mudra finger for {organ_en.title()} is Left Hand {finger}."
                 image_path = get_image_path(finger.strip())
             elif organ_ta:
                 finger = tamil_dict[organ_ta]
-                response = f"**{organ_ta}** உடற்கூறிற்கு உரிய முத்திரை விரல் இடது கை **{finger}** ஆகும்."
+                response = f"{organ_ta} உடற்கூறிற்கு உரிய முத்திரை விரல் இடது கை {finger} ஆகும்."
                 image_path = get_image_path(finger.strip())
             else:
                 response = "🙏 Sorry, I don't have mudra information for that organ."
@@ -247,11 +247,11 @@ def main():
 
             if is_tamil and organ in tamil_dict:
                 finger = tamil_dict[organ]
-                response = f"**{organ}** உடற்கூறிற்கு உரிய முத்திரை விரல் இடது கை **{finger}** ஆகும்."
+                response = f"{organ} உடற்கூறிற்கு உரிய முத்திரை விரல் இடது கை {finger} ஆகும்."
                 image_path = get_image_path(finger)
             elif not is_tamil and organ in eng_dict:
                 finger = eng_dict[organ]
-                response = f"The mudra finger for **{organ.title()}** is Left Hand **{finger}**."
+                response = f"The mudra finger for {organ.title()} is Left Hand {finger}."
                 image_path = get_image_path(finger)
             else:
                 response = "🙏 Sorry, I don't have mudra information for that organ."
@@ -264,11 +264,42 @@ def main():
             st.session_state.selected_organ = None
 
     for role, msg in st.session_state.chat_history:
-        with st.chat_message(role if role in ["user", "assistant"] else "assistant"):
-            if role == "image":
-                st.image(msg, caption="Mudra Finger", use_container_width=True)
-            else:
-                st.markdown(msg)
+     with st.chat_message(role if role in ["user", "assistant"] else "assistant"):
+
+        if role == "image":
+            st.image(msg, caption="Mudra Finger", use_container_width=True)
+
+        elif role == "assistant":
+            # Highlight organ and mudhra finger (Tamil + English) with clean style
+            styled_msg = (
+                msg.replace("Organ", "<span style='color:#90EE90; font-weight:700;'>Organ</span>")
+                   .replace("Mudhra Finger", "<span style='color:#90EE90; font-weight:700;'>Mudhra Finger</span>")
+                   .replace("உடற்கூறு", "<span style='color:#90EE90; font-weight:700;'>உடற்கூறு</span>")
+                   .replace("முத்திரை விரல்", "<span style='color:#90EE90; font-weight:700;'>முத்திரை விரல்</span>")
+            )
+
+            st.markdown(
+                f"""
+                <div style='
+                    font-size: 22px;
+                    font-family: "Noto Sans Tamil", "Poppins", "Trebuchet MS", sans-serif;
+                    font-weight: 600;
+                    color: #FAFAD2;
+                    line-height: 1.6;
+                    background: transparent;
+                    padding: 0;'>
+                    {styled_msg}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+        else:
+            st.markdown(f"<div style='color:white; font-size: 18px;'>{msg}</div>", unsafe_allow_html=True)
+    
+
+
+
 
 if __name__ == "__main__":
     main()
