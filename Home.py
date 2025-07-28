@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import streamlit.components.v1 as components
 
 # -------------- Set Background --------------
 def set_bg():
@@ -122,39 +123,51 @@ def set_bg():
             transform: scale(1.03);
         }}
 
-        div.stRadio > label > div > p{{
-        font-size : 20px;
-        color:#FAFAD2;
-        font-weight: 600;
-        }}
-
-        div[role="radiogroup"] > label {{
-        font-size: 18px !important;
-        color: orange !important; /* Change to any color you like */
-        font-weight: 600 !important;
-        margin-right: 15px;
-        }}
-
+        .stRadio > label {{
+        font-size: 24px;
+        font-weight: 700;
+        color: #FAFAD2;
+    }}
         .info-text {{
             text-align: center;
             font-size: 2rem;
             color: #f5f5dc;
             margin-bottom: 50px;
         }}
+
         </style>
         """,
         unsafe_allow_html=True
     )
 
+def change_radio_option_size(option_text,new_size='20px'):
+    js = f"""
+            <script>
+            const elems = window.parent.document.querySelectorAll('*');
+            elems.forEach(el => {{
+            if (el.innerText === '{option_text}') {{
+            el.style.fontSize = '{new_size}';
+            }}
+            }}) ;
+            </script>
+            """
+    components.html(js, height=0, width=0)
+
+
+
+
 # ---------- Streamlit Page Config ----------
 st.set_page_config(page_title="MudraGuide 🖐️", layout="wide")
 set_bg()
+
+change_radio_option_size("English","30px")
+change_radio_option_size("Tamil","30px")
 
 # ---------- Language Switch ----------
 if "language" not in st.session_state:
     st.session_state.language = "English"
 
-language = st.radio("🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்", ["English", "Tamil"], horizontal=True)
+language = st.radio("🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்",["English", "Tamil"], horizontal=True)
 st.session_state.language = language
 
 # ---------- TITLE & SLOGAN ----------
@@ -270,6 +283,8 @@ else:
 
 # ---------- START HEALING BUTTON ----------
 col_start, col_spacer, col_choice = st.columns([2, 2, 2])
+change_radio_option_size("Mental","30px")
+change_radio_option_size("Physical","30px")
 with col_spacer:
     if st.button(start_btn, use_container_width=True):
         st.session_state.show_options = True
