@@ -164,11 +164,17 @@ change_radio_option_size("English","30px")
 change_radio_option_size("Tamil","30px")
 
 # ---------- Language Switch ----------
-if "language" not in st.session_state:
-    st.session_state.language = "English"
 
-language = st.radio("🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்",["English", "Tamil"], horizontal=True)
-st.session_state.language = language
+if "language" not in st.session_state:
+    st.session_state.language = "Tamil"
+
+# Step 2: Bind the radio button directly to session state
+st.radio(
+    "🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்",
+    ["Tamil", "English"],
+    horizontal=True,
+    key="language"  # This binds directly to session_state["language"]
+)
 
 # ---------- TITLE & SLOGAN ----------
 if st.session_state.language == "English":
