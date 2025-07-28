@@ -1,7 +1,7 @@
 import streamlit as st
 import base64
-import os
 
+# -------------- Set Background --------------
 def set_bg():
     with open("bg_image3.png", 'rb') as f:
         bg_data = f.read()
@@ -17,6 +17,20 @@ def set_bg():
             background-attachment: fixed;
             font-family: 'Segoe UI', 'Arial', 'sans-serif';
             min-height: 100vh;
+        }}
+
+        div.stRadio > label > div > p {{
+            font-size : 22px;
+            color:#FAFAD2;
+            font-weight: 700;
+            text-align: center;
+        }}
+
+        div[role="radiogroup"] > label {{
+            font-size: 20px !important;
+            color: #00FFFF !important;
+            font-weight: 600 !important;
+            margin-right: 20px;
         }}
 
         .title-text {{
@@ -111,29 +125,66 @@ def set_bg():
         div.stRadio > label > div > p{{
         font-size : 20px;
         color:#FAFAD2;
+        font-weight: 600;
+        }}
+
+        div[role="radiogroup"] > label {{
+        font-size: 18px !important;
+        color: #00FFFF !important; /* Change to any color you like */
+        font-weight: 600 !important;
+        margin-right: 15px;
+        }}
+
+        .info-text {{
+            text-align: center;
+            font-size: 2rem;
+            color: #f5f5dc;
+            margin-bottom: 50px;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
 
-# Set page config and background
+# ---------- Streamlit Page Config ----------
 st.set_page_config(page_title="MudraGuide 🖐️", layout="wide")
 set_bg()
 
-# Title and tagline
-st.markdown("<div class='title-text'>🌟 MudraGuide 🖐️</div>", unsafe_allow_html=True)
-st.markdown("<div class='slogan-text'>\"Your healing begins at your fingertips.\"</div>", unsafe_allow_html=True)
+# ---------- Language Switch ----------
+if "language" not in st.session_state:
+    st.session_state.language = "English"
 
-# ---------- Top Section ----------
+language = st.radio("🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்", ["English", "Tamil"], horizontal=True)
+st.session_state.language = language
+
+# ---------- TITLE & SLOGAN ----------
+if st.session_state.language == "English":
+    title_text = "🌟 MudraGuide 🖐️"
+    slogan = "\"Your healing begins at your fingertips.\""
+    guide_title = "🌿 Mudra Guide"
+    guide_para1 = "Mudra Guide is committed to guiding individuals toward better health and well-being using authentic, traditional, and natural practices."
+    guide_para2 = "Our app is designed to be your companion in exploring effective wellness methods rooted in the science of mudras—a time-honored technique used in yoga and Ayurveda."
+else:
+    title_text = "🌟 முத்திரை வழிகாட்டி 🖐️"
+    slogan = "\"உங்கள் குணமாக்கல் உங்கள் விரல்களில் ஆரம்பமாகிறது.\""
+    guide_title = "🌿 முத்திரை வழிகாட்டி"
+    guide_para1 = "முத்திரை வழிகாட்டி பரம்பரையாக பரிமாறப்பட்ட இயற்கையான முறைகளைப் பயன்படுத்தி நலனையும் உடல்நலத்தையும் மேம்படுத்தும் நோக்குடன் உருவாக்கப்பட்டுள்ளது."
+    guide_para2 = "இந்த செயலி யோகாவிலும் ஆயுர்வேதத்திலும் பரவலாக பயன்படுத்தப்படும் முத்திரைகள் என்ற பழம்பெரும் அறிவியலை அடிப்படையாகக் கொண்டு உங்கள் நலன் பயணத்திற்கு துணையாக இருக்கும்."
+
+# ---------- RENDER TITLE & SLOGAN ----------
+st.markdown(f"<div class='title-text'>{title_text}</div>", unsafe_allow_html=True)
+st.markdown(f"<div class='slogan-text'>{slogan}</div>", unsafe_allow_html=True)
+
+# ---------- TOP SECTION ----------
 col1, col2 = st.columns([1, 1], gap="large")
+
 with col1:
     st.markdown(
-        """
+        f"""
         <div class="content-box">
-            <h3>🌿 Mudra Guide</h3>
-            <p>Mudra Guide is committed to guiding individuals toward better health and well-being using authentic, traditional, and natural practices.</p>
-            <p>Our app is designed to be your companion in exploring effective wellness methods rooted in the science of mudras—a time-honored technique used in yoga and Ayurveda.</p>
+            <h3>{guide_title}</h3>
+            <p>{guide_para1}</p>
+            <p>{guide_para2}</p>
         </div>
         """, unsafe_allow_html=True
     )
@@ -151,65 +202,112 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
 
-# ---------- Second Row ----------
-st.markdown(" ")
+# ---------- SECOND ROW CONTENT BASED ON LANGUAGE ----------
+if st.session_state.language == "English":
+    mudra_title = "🤲 What Are Mudras?"
+    mudra_para1 = "Mudras are hand gestures or placements used in yoga and Ayurveda to channel the body's energy flow, balance elements, and promote physical and mental health."
+    mudra_para2 = "Each finger represents a specific element, and by touching them in certain combinations, you can influence your body's internal equilibrium."
+
+    help_title = "🧘‍♀️ How Mudhra Solutions Can Help You"
+    help_points = [
+        "<strong>Personalized Mudra Recommendations:</strong> Get suggestions based on your symptoms or health goals.",
+        "<strong>Science-Backed Guidance:</strong> Insights rooted in ancient yogic texts and modern research.",
+        "<strong>Step-by-Step Instructions:</strong> Learn mudras easily with clear visuals and directions."
+    ]
+else:
+    mudra_title = "🤲 முத்திரைகள் என்றால் என்ன?"
+    mudra_para1 = "யோகாவிலும் ஆயுர்வேதத்திலும், முத்திரைகள் என்பது கையினால் செய்யப்படும் சைகைகள் ஆகும். இது உடலின் ஆற்றல் ஓட்டத்தை சீரமைத்து, உடல் மற்றும் மன நலனைக் கூட்ட பயன்படுகின்றன."
+    mudra_para2 = "ஒவ்வொரு விரலும் ஒரு தனி தனி உறுப்பை/தத்துவத்தை குறிக்கின்றது; விரல்களை சரியான முறைப் படி பதுக்குவதால் உடலின் சமநிலையை சீராக்க முடியும்."
+
+    help_title = "🧘‍♀️ முத்திரா ஹெல்த் தீர்வுகள் உங்களுக்கு எவ்வாறு உதவுகின்றன?"
+    help_points = [
+        "<strong>தனிப்பட்ட முத்திரை பரிந்துரைகள்:</strong> உங்கள் உடல் நிலை அல்லது நோயின்படி சிறந்த முத்திரைகளை அறிவுறுத்துகிறது.",
+        "<strong>அறிவியல் ஆதாரங்கள்:</strong> பழமையான யோக நூல்கள் மற்றும் நவீன ஆராய்ச்சிகளை சார்ந்த தகவல்கள்.",
+        "<strong>வழிமுறைகள் எளிதில்:</strong> படங்களும் எளிய விளக்கங்களும் கொண்டு முத்திரைகளை எளிதாக கற்றுக்கொள்ளுங்கள்."
+    ]
+
+# ---------- RENDER SECOND ROW ----------
+st.markdown(" ")  # Spacer
 col3, col4 = st.columns([1, 1], gap="large")
+
 with col3:
     st.markdown(
-        """
+        f"""
         <div class="content-box">
-            <h4>🤲 What Are Mudras?</h4>
-            <p>Mudras are hand gestures or placements used in yoga and Ayurveda to channel the body's energy flow, balance elements, and promote physical and mental health.</p>
-            <p>Each finger represents a specific element, and by touching them in certain combinations, you can influence your body's internal equilibrium.</p>
+            <h4>{mudra_title}</h4>
+            <p>{mudra_para1}</p>
+            <p>{mudra_para2}</p>
         </div>
         """, unsafe_allow_html=True
     )
 
 with col4:
-    st.markdown(
-        """
+    st.markdown(f"""
         <div class="content-box">
-            <h4>🧘‍♀️ How Mudhra Solutions Can Help You</h4>
+            <h4>{help_title}</h4>
             <ul>
-                <li><strong>Personalized Mudra Recommendations:</strong> Get suggestions based on your symptoms or health goals.</li>
-                <li><strong>Science-Backed Guidance:</strong> Insights rooted in ancient yogic texts and modern research.</li>
-                <li><strong>Step-by-Step Instructions:</strong> Learn mudras easily with clear visuals and directions.</li>
+                {''.join(f"<li>{point}</li>" for point in help_points)}
             </ul>
         </div>
-        """, unsafe_allow_html=True
-    )
+        """, unsafe_allow_html=True)
 
-# ---------- Final CTA ----------
+
+# ---------- FINAL CTA CONTENT ----------
+if st.session_state.language == "English":
+    cta_title = "✨ Start Your Journey"
+    cta_line1 = "Begin by selecting your health concern and explore personalized mudra routines!"
+    cta_line2 = "Discover the harmony of body and mind with guidance from <strong>Mudhra Health Solutions</strong>."
+
+    start_btn = "🚀 Start Healing Now"
+    healing_prompt = "Choose the type of healing you want to explore:"
+    healing_options = [":orange[Mental]", ":orange[Physical]"]
+    coming_soon_msg = "<div class='info-text'>Mental Healing coming soon... 🧠✨</div>"
+    redirect_msg = "Redirecting to Physical Healing Page..."
+else:
+    cta_title = "✨ உங்கள் பயணத்தை துவங்குங்கள்"
+    cta_line1 = "உங்கள் உடல் நிலையை தேர்வு செய்து, தனிப்பட்ட முத்திரைகளை ஆராயுங்கள்!"
+    cta_line2 = "<strong>முத்திரா ஹெல்த் தீர்வுகள்</strong> மூலம் உங்கள் உடலும் மனதும் இசைவுடன் இணைவதை கண்டறியுங்கள்."
+
+    start_btn = "🚀 இப்போது குணமாக தொடங்குங்கள்"
+    healing_prompt = "நீங்கள் ஆராய விரும்பும் குணமாக்கல் வகையைத் தேர்ந்தெடுக்கவும்:"
+    healing_options = [":orange[மனநலம்]", ":orange[உடல் நலம்]"]
+    coming_soon_msg = "<div class='info-text'>மன நலம் விரைவில் வருகிறது... 🧠✨</div>"
+    redirect_msg = "உடல் நல பக்கம் செல்லப்படுகிறது..."
+
+# ---------- FINAL CTA BOX ----------
 st.markdown(
-    """
+    f"""
     <div class="content-box" style="margin-top: 2rem; text-align: center;">
-        <h3>✨ Start Your Journey</h3>
-        <p>Begin by selecting your health concern and explore personalized mudra routines!</p>
-        <p>Discover the harmony of body and mind with guidance from <strong>Mudhra Health Solutions</strong>.</p>
+        <h3>{cta_title}</h3>
+        <p>{cta_line1}</p>
+        <p>{cta_line2}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
+# ---------- HEALING BUTTON ----------
 st.markdown(" ")
 st.markdown(" ")
 
-# ---------- Start Healing Button ----------
 col_start, col_spacer, col_choice = st.columns([2, 2, 2])
 with col_spacer:
-    if st.button("🚀 Start Healing Now", use_container_width=True):
+    if st.button(start_btn, use_container_width=True):
         st.session_state.show_options = True
 
+# ---------- HEALING TYPE CHOICE ----------
 if st.session_state.get("show_options", False):
     with col_choice:
         healing_type = st.radio(
-            "Choose the type of healing you want to explore:",
-            ["Mental", "Physical"],
+            healing_prompt,
+            healing_options,
             horizontal=True
         )
 
-        if healing_type == "Physical":
-            st.success("Redirecting to Physical Healing Page...")
-            st.switch_page("pages/physical.py")  # Ensure physical.py is inside the 'pages/' folder
-        elif healing_type == "Mental":
-            st.info("Mental Healing coming soon... 🧠✨")
+        if (st.session_state.language == "English" and healing_type == "Physical") or \
+           (st.session_state.language == "Tamil" and healing_type == "உடல் நலம்"):
+            st.success(redirect_msg)
+            st.switch_page("pages/physical.py")
+        else:
+            st.markdown(coming_soon_msg, unsafe_allow_html=True)
+
