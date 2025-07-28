@@ -130,7 +130,7 @@ def set_bg():
 
         div[role="radiogroup"] > label {{
         font-size: 18px !important;
-        color: #00FFFF !important; /* Change to any color you like */
+        color: orange !important; /* Change to any color you like */
         font-weight: 600 !important;
         margin-right: 15px;
         }}
@@ -252,62 +252,36 @@ with col4:
         """, unsafe_allow_html=True)
 
 
-# ---------- FINAL CTA CONTENT ----------
+# ---------- HEALING OPTIONS SETUP ----------
 if st.session_state.language == "English":
-    cta_title = "✨ Start Your Journey"
-    cta_line1 = "Begin by selecting your health concern and explore personalized mudra routines!"
-    cta_line2 = "Discover the harmony of body and mind with guidance from <strong>Mudhra Health Solutions</strong>."
-
-    start_btn = "🚀 Start Healing Now"
     healing_prompt = "Choose the type of healing you want to explore:"
-    healing_options = [":orange[Mental]", ":orange[Physical]"]
-    coming_soon_msg = "<div class='info-text'>Mental Healing coming soon... 🧠✨</div>"
+    healing_labels = {":orange[Mental]": "mental", ":orange[Physical]": "physical"}
+    healing_display = list(healing_labels.keys())
+    start_btn = "🚀 Start Healing Now"
     redirect_msg = "Redirecting to Physical Healing Page..."
+    coming_soon_msg = "<div class='info-text'>Mental Healing coming soon... 🧠✨</div>"
 else:
-    cta_title = "✨ உங்கள் பயணத்தை துவங்குங்கள்"
-    cta_line1 = "உங்கள் உடல் நிலையை தேர்வு செய்து, தனிப்பட்ட முத்திரைகளை ஆராயுங்கள்!"
-    cta_line2 = "<strong>முத்திரா ஹெல்த் தீர்வுகள்</strong> மூலம் உங்கள் உடலும் மனதும் இசைவுடன் இணைவதை கண்டறியுங்கள்."
-
-    start_btn = "🚀 இப்போது குணமாக தொடங்குங்கள்"
     healing_prompt = "நீங்கள் ஆராய விரும்பும் குணமாக்கல் வகையைத் தேர்ந்தெடுக்கவும்:"
-    healing_options = [":orange[மனநலம்]", ":orange[உடல் நலம்]"]
-    coming_soon_msg = "<div class='info-text'>மன நலம் விரைவில் வருகிறது... 🧠✨</div>"
+    healing_labels = {":orange[மனநலம்]": "mental", ":orange[உடல் நலம்]": "physical"}
+    healing_display = list(healing_labels.keys())
+    start_btn = "🚀 இப்போது குணமாக தொடங்குங்கள்"
     redirect_msg = "உடல் நல பக்கம் செல்லப்படுகிறது..."
+    coming_soon_msg = "<div class='info-text'>மன நலம் விரைவில் வருகிறது... 🧠✨</div>"
 
-# ---------- FINAL CTA BOX ----------
-st.markdown(
-    f"""
-    <div class="content-box" style="margin-top: 2rem; text-align: center;">
-        <h3>{cta_title}</h3>
-        <p>{cta_line1}</p>
-        <p>{cta_line2}</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# ---------- HEALING BUTTON ----------
-st.markdown(" ")
-st.markdown(" ")
-
+# ---------- START HEALING BUTTON ----------
 col_start, col_spacer, col_choice = st.columns([2, 2, 2])
 with col_spacer:
     if st.button(start_btn, use_container_width=True):
         st.session_state.show_options = True
 
-# ---------- HEALING TYPE CHOICE ----------
+# ---------- SHOW RADIO + HANDLE SELECTION ----------
 if st.session_state.get("show_options", False):
     with col_choice:
-        healing_type = st.radio(
-            healing_prompt,
-            healing_options,
-            horizontal=True
-        )
+        selected_display = st.radio(healing_prompt, healing_display, horizontal=True)
+        selected_value = healing_labels[selected_display]  # "mental" or "physical"
 
-        if (st.session_state.language == "English" and healing_type == "Physical") or \
-           (st.session_state.language == "Tamil" and healing_type == "உடல் நலம்"):
+        if selected_value == "physical":
             st.success(redirect_msg)
-            st.switch_page("pages/physical.py")
+            st.switch_page("pages/physical.py")  # page name only
         else:
             st.markdown(coming_soon_msg, unsafe_allow_html=True)
-
