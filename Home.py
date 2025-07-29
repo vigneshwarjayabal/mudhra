@@ -274,35 +274,52 @@ with col4:
 # ---------- HEALING OPTIONS SETUP ----------
 if st.session_state.language == "English":
     healing_prompt = "Choose the type of healing you want to explore:"
-    healing_labels = {":orange[Mental]": "mental", ":orange[Physical]": "physical"}
+    healing_labels = {
+        ":orange[Mental]": "mental",
+        ":orange[Physical]": "physical"
+    }
     healing_display = list(healing_labels.keys())
     start_btn = "🚀 Start Healing Now"
     redirect_msg = "Redirecting to Physical Healing Page..."
-    coming_soon_msg = "<div class='info-text'>Mental Healing coming soon... 🧠✨</div>"
+    redirect2_msg = "Redirecting to Mental Healing coming soon..."
 else:
     healing_prompt = "நீங்கள் ஆராய விரும்பும் குணமாக்கல் வகையைத் தேர்ந்தெடுக்கவும்:"
-    healing_labels = {":orange[மனநலம்]": "mental", ":orange[உடல் நலம்]": "physical"}
+    healing_labels = {
+        ":orange[மனநலம்]": "mental",
+        ":orange[உடல் நலம்]": "physical"
+    }
     healing_display = list(healing_labels.keys())
     start_btn = "🚀 இப்போது குணமாக தொடங்குங்கள்"
     redirect_msg = "உடல் நல பக்கம் செல்லப்படுகிறது..."
-    coming_soon_msg = "<div class='info-text'>மன நலம் விரைவில் வருகிறது... 🧠✨</div>"
+    redirect2_msg = "மன நலம் பக்கம் செல்லப்படுகிறது..."
 
 # ---------- START HEALING BUTTON ----------
 col_start, col_spacer, col_choice = st.columns([2, 2, 2])
-change_radio_option_size("Mental","30px")
-change_radio_option_size("Physical","30px")
+change_radio_option_size("Mental", "30px")
+change_radio_option_size("Physical", "30px")
+
 with col_spacer:
     if st.button(start_btn, use_container_width=True):
         st.session_state.show_options = True
+        st.session_state.selected_display = None  # Reset selection
 
 # ---------- SHOW RADIO + HANDLE SELECTION ----------
 if st.session_state.get("show_options", False):
     with col_choice:
-        selected_display = st.radio(healing_prompt, healing_display, horizontal=True)
-        selected_value = healing_labels[selected_display]  # "mental" or "physical"
+        selected_display = st.radio(
+            healing_prompt,
+            healing_display,
+            horizontal=True,
+            index=None,  # KEY TRICK: No default selected
+            key="selected_display"  # Save value to session_state
+        )
 
-        if selected_value == "physical":
-            st.success(redirect_msg)
-            st.switch_page("pages/physical.py")  # page name only
-        else:
-            st.markdown(coming_soon_msg, unsafe_allow_html=True)
+        if st.session_state.selected_display:
+            selected_value = healing_labels[st.session_state.selected_display]
+
+            if selected_value == "physical":
+                st.success(redirect_msg)
+                st.switch_page("pages/physical.py")
+            elif selected_value == "mental":
+                st.success(redirect2_msg)
+                st.switch_page("pages/mental.py")
