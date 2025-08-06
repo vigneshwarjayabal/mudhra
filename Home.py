@@ -252,8 +252,9 @@ change_radio_option_weight("English",'bold')
 change_radio_option_weight("Tamil",'bold')
 
 
-for option in healing_options:
+for option in  ["English", "Tamil"] + healing_options:
     change_radio_option_size(option,'40px')
     change_radio_option_color(option,'orange')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
+
