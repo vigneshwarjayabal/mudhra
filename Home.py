@@ -257,3 +257,4 @@ for option in healing_options:
     change_radio_option_color(option,'orange')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
+
