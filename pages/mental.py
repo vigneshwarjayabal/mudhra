@@ -299,32 +299,29 @@ def main():
 
     # 🌟 Welcome Heading and Slogan (moved after language toggle)
     if is_tamil:
-        st.markdown("# 🌿 மூத்தவர்கள் விரல் சிகிச்சை 🖐️")
+        st.markdown("# 🌿 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️")
         st.markdown("### இயற்கை முறை, பரம்பரை அறிவு மூலம் ஆரோக்கியத்தை மேம்படுத்துங்கள்.")
     else:
-        st.markdown("# 🌿 ElderCare Finger Therapy 🖐️")
+        st.markdown("# 🌿 Elderly Care Finger Touch Therapy 🖐️")
         st.markdown("### ✨ Discover your healing **mudra finger** through organ-based Siddha wisdom")
 
     organs = tamil_organs if is_tamil else english_organs
     box1, box2, box3, box4 = organs[:6], organs[6:12], organs[12:17], organs[17:]
 
-    def render_organ_box(title, organs_list):
+    def render_organ_box(organs_list):
         with st.container():
-            st.markdown(f"""<div class='content-box'><h3>{title}</h3>""", unsafe_allow_html=True)
             cols = st.columns(3)
             for idx, organ in enumerate(organs_list):
                 with cols[idx % 3]:
                     if st.button(organ.title() if not is_tamil else organ, key=organ):
                         st.session_state.selected_organ = organ
-            st.markdown("</div>", unsafe_allow_html=True)
-
     col1, col2 = st.columns(2, gap="large")
     with col1:
-        render_organ_box("🔠 Group 1" if not is_tamil else "🔠 தொகுதி 1", box1)
-        render_organ_box("🔠 Group 2" if not is_tamil else "🔠 தொகுதி 2", box2)
+        render_organ_box(box1)
+        render_organ_box(box2)
     with col2:
-        render_organ_box("🔠 Group 3" if not is_tamil else "🔠 தொகுதி 3", box3)
-        render_organ_box("🔠 Group 4" if not is_tamil else "🔠 தொகுதி 4", box4)
+        render_organ_box(box3)
+        render_organ_box(box4)
 
      
     user_input = st.chat_input("Type your organ name in English or Tamil...")
