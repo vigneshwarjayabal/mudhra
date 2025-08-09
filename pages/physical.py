@@ -307,7 +307,7 @@ def main():
         st.markdown("### ✨ Discover your healing **mudra finger** through organ-based Siddha wisdom")
 
     organs = tamil_organs if is_tamil else english_organs
-    box1, box2, box3, box4 = organs[:6], organs[7:12], organs[13:17], organs[18:]
+    box1, box2, box3, box4 = organs[:6], organs[6:12], organs[12:17], organs[17:]
 
     def render_organ_box(organs_list):
         with st.container():
@@ -440,5 +440,6 @@ if(marker){ marker.scrollIntoView({ behavior: "smooth", block: "start" }); }
 
 if __name__ == "__main__":
     main()
+
 
 
