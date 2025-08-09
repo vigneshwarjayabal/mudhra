@@ -171,10 +171,10 @@ st.radio(
 
 # ---------- TITLE & SLOGAN ----------
 if st.session_state.language == "English":
-    title_text = "🌟  ElderCare Finger Therapy  🖐️"
+    title_text = "🌟 Elderly Care Finger Touch Therapy  🖐️"
     slogan = "\"Natural Healing for Body and Mind.\""
 else:
-    title_text = "🌟 மூத்தவர்கள் விரல் சிகிச்சை 🖐️"
+    title_text = "🌟 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️"
     slogan = "\"உடலும் மனதும் நலமடைய இயற்கை சிகிச்சை.\""
     
 # ---------- RENDER TITLE & SLOGAN ----------
@@ -257,4 +257,3 @@ for option in healing_options:
     change_radio_option_color(option,'orange')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
-
