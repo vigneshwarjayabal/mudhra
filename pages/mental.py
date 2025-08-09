@@ -300,10 +300,10 @@ def main():
     # 🌟 Welcome Heading and Slogan (moved after language toggle)
     if is_tamil:
         st.markdown("# 🌿 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️")
-        st.markdown("### இயற்கை முறை, பரம்பரை அறிவு மூலம் ஆரோக்கியத்தை மேம்படுத்துங்கள்.")
+        st.markdown("### ✨ எந்த உடல் உறுப்பில் பிரச்சனை")
     else:
         st.markdown("# 🌿 Elderly Care Finger Touch Therapy 🖐️")
-        st.markdown("### ✨ Discover your healing **mudra finger** through organ-based Siddha wisdom")
+        st.markdown("### ✨ Which body part has a problem")
 
     organs = tamil_organs if is_tamil else english_organs
     box1, box2, box3, box4 = organs[:6], organs[6:12], organs[12:17], organs[17:]
@@ -463,3 +463,4 @@ if(marker){ marker.scrollIntoView({ behavior: "smooth", block: "start" }); }
 
 if __name__ == "__main__":
     main()
+
