@@ -157,14 +157,14 @@ if "language" not in st.session_state:
 
 st.markdown("""
     <div class="custom-radio-wrapper">
-        <div class="custom-radio-title">🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும்</div>
+        <div class="custom-radio-title">🗣️ Choose Language / மொழி தேர்ந்தெடுக்கவும் / भाषा चुनें </div>
     </div>
 """, unsafe_allow_html=True)
 
 # Step 2: Bind the radio button directly to session state
 st.radio(
     "",
-    ["Tamil", "English"],
+    ["Tamil", "English","Hindi"],
     horizontal=True,
     key="language"  # This binds directly to session_state["language"]
 )
@@ -173,9 +173,13 @@ st.radio(
 if st.session_state.language == "English":
     title_text = "🌟 Elderly Care Finger Touch Therapy  🖐️"
     slogan = "\"Natural Healing for Body and Mind.\""
-else:
+elif st.session_state.language == "Tamil":
     title_text = "🌟 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️"
     slogan = "\"உடலும் மனதும் நலமடைய இயற்கை சிகிச்சை.\""
+else:
+    title_text = "🌟 वृद्धजन देखभाल उंगली स्पर्श उपचार 🖐️"
+    slogan = "\"शरीर और मन के लिए प्राकृतिक उपचार.\""
+
     
 # ---------- RENDER TITLE & SLOGAN ----------
 st.markdown(f"<div class='title-text'>{title_text}</div>", unsafe_allow_html=True)
@@ -188,14 +192,14 @@ if st.session_state.language == "English":
     healing_options = ["Mental", "Physical"]
     start_btn = "🚀 Start Healing Now"
     redirect_messages = {
-        "Mental": "Redirecting to Mental Healing coming soon...",
+        "Mental": "Redirecting to Mental Healing Page...",
         "Physical": "Redirecting to Physical Healing Page..."
     }
     redirect_pages = {
         "Mental": "pages/mental.py",
         "Physical": "pages/physical.py"
     }
-else:
+elif st.session_state.language == "Tamil":
     healing_prompt = "🧘‍♀️ நீங்கள் ஆராய விரும்பும் குணமாக்கல் வகையைத் தேர்ந்தெடுக்கவும்:"
     healing_options = ["மனநலம்", "உடல் நலம்"]
     start_btn = "🚀 இப்போது குணமாக தொடங்குங்கள்"
@@ -206,6 +210,19 @@ else:
     redirect_pages = {
         "மனநலம்": "pages/mental.py",
         "உடல் நலம்": "pages/physical.py"
+    }
+
+else:
+    healing_prompt = "🧘‍♀️ आप जिस प्रकार की उपचार पद्धति का अन्वेषण करना चाहते हैं, उसे चुनें:"
+    healing_options = ["मानसिक", "भौतिक"]
+    start_btn = "🚀 अभी उपचार शुरू करें"
+    redirect_messages = {
+        "मानसिक": "मानसिक उपचार पृष्ठ पर पुनर्निर्देशित किया जा रहा है...",
+        "भौतिक": "शारीरिक उपचार पृष्ठ पर पुनर्निर्देशित किया जा रहा है..."
+    }
+    redirect_pages = {
+        "मानसिक": "pages/mental.py",
+        "भौतिक": "pages/physical.py"
     }
 
 
@@ -241,15 +258,20 @@ if st.session_state.get("show_options", False):
 
 change_radio_option_size("English","40px")
 change_radio_option_size("Tamil","40px")
+change_radio_option_size("Hindi","40px")
+
 
 change_radio_option_color("English",'orange')
 change_radio_option_color("Tamil",' orange')
+change_radio_option_color("Hindi",' orange')
 
 change_radio_option_font("English",'Segoe UI')
 change_radio_option_font("Tamil",'Segoe UI')
+change_radio_option_font("Hindi",'Segoe UI')
 
 change_radio_option_weight("English",'bold')
 change_radio_option_weight("Tamil",'bold')
+change_radio_option_weight("Hindi",'bold')
 
 
 for option in healing_options:
