@@ -4,6 +4,7 @@ import re
 import os
 import base64
 import streamlit.components.v1 as components
+import time
 
 st.set_page_config(
     page_title="Mudhra Healing App",
@@ -19,14 +20,15 @@ def load_data():
 def build_mudra_dict(df):
     eng_dict = dict(zip(df['mentel'].str.lower().str.strip(), df['mudhra_en'].str.strip()))
     tamil_dict = dict(zip(df['mentel_tm'].str.strip(), df['mudhra_tm'].str.strip()))
-    return eng_dict, tamil_dict
+    hindi_dict = dict(zip(df['mentel_hn'].str.strip(), df['mudhra_hn'].str.strip()))
+    return eng_dict, tamil_dict, hindi_dict
 
-def extract_organs(user_input, organ_list, is_tamil=False):
+def extract_organs(user_input, organ_list, language="english"):
     for organ in organ_list:
-        if is_tamil:
+        if language.lower() == "tamil" or language.lower() == "hindi":
             if organ.strip() in user_input.strip():
                 return organ
-        else:
+        else:  # English
             pattern = r"\b" + re.escape(organ.strip().lower()) + r"\b"
             if re.search(pattern, user_input.lower()):
                 return organ
@@ -34,11 +36,19 @@ def extract_organs(user_input, organ_list, is_tamil=False):
 
 def get_image_path(finger_name):
     finger_map = {
+        # Tamil mapping
         "பெருவிரல்": "thumb finger",
         "ஆள்காட்டி விரல்": "index finger",
         "நடு விரல்": "middle finger",
         "மோதிர விரல்": "ring finger",
         "சுண்டு விரல்": "little finger",
+
+        # Hindi mapping
+        "अंगूठा उंगली": "thumb finger",
+        "तर्जनी": "index finger",
+        "बीच की ऊँगली": "middle finger",
+        "रिंग फिंगर": "ring finger",
+        "छोटी उंगली": "little finger"
     }
 
     mapped = finger_map.get(finger_name.strip(), finger_name.lower())
@@ -265,9 +275,10 @@ def main():
     set_bg()
 
     df = load_data()
-    eng_dict, tamil_dict = build_mudra_dict(df)
+    eng_dict, tamil_dict,hindi_dict = build_mudra_dict(df)
     english_organs = list(eng_dict.keys())
     tamil_organs = list(tamil_dict.keys())
+    hindi_organs = list(hindi_dict.keys())
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
@@ -292,29 +303,39 @@ def main():
         )
         st.session_state.language = st.radio(
             "", 
-            ["Tamil", "English"], 
+            ["Tamil", "English" ,"Hindi"], 
             horizontal=True, key="language_radio")
     
     is_tamil = st.session_state.language == "Tamil"
+    is_hindi = st.session_state.language == "Hindi"
 
     # 🌟 Welcome Heading and Slogan (moved after language toggle)
     if is_tamil:
         st.markdown("# 🌿 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️")
-        st.markdown("### ✨ எந்த உடல் உறுப்பில் பிரச்சனை")
+        st.markdown("### இயற்கை முறை, பரம்பரை அறிவு மூலம் ஆரோக்கியத்தை மேம்படுத்துங்கள்.")
+    elif is_hindi:
+         st.markdown("# 🌿   वृद्धजन देखभाल उंगली स्पर्श उपचार 🖐️")
+         st.markdown("### ✨अंग-आधारित सिद्ध ज्ञान के माध्यम से अपनी उपचारात्मक मुद्रा उंगली खोजें")
+        
     else:
-        st.markdown("# 🌿 Elderly Care Finger Touch Therapy 🖐️")
-        st.markdown("### ✨ Which body part has a problem")
+        st.markdown("# 🌿  Elderly Care Finger Touch Therapy 🖐️")
+        st.markdown("### ✨ Discover your healing **mudra finger** through organ-based Siddha wisdom")
 
-    organs = tamil_organs if is_tamil else english_organs
+    organs = tamil_organs if is_tamil else hindi_organs if is_hindi else english_organs
     box1, box2, box3, box4 = organs[:6], organs[6:12], organs[12:17], organs[17:]
 
     def render_organ_box(organs_list):
-        with st.container():
-            cols = st.columns(3)
-            for idx, organ in enumerate(organs_list):
-                with cols[idx % 3]:
-                    if st.button(organ.title() if not is_tamil else organ, key=organ):
-                        st.session_state.selected_organ = organ
+     with st.container():
+        cols = st.columns(3)
+        for idx, organ in enumerate(organs_list):
+            with cols[idx % 3]:
+                if st.button(
+                    organ.title() if not (is_tamil or is_hindi) else organ, 
+                    key=organ
+                ):
+                    st.session_state.selected_organ = organ
+    st.markdown("</div>", unsafe_allow_html=True)
+
     col1, col2 = st.columns(2, gap="large")
     with col1:
         render_organ_box(box1)
@@ -332,8 +353,9 @@ def main():
     display_therapy_script_sections(pre_mudra=True)  # 🧘 Show Section 1–3
 
     if user_input:
-        organ_en = extract_organs(user_input, eng_dict.keys(), is_tamil=False)
-        organ_ta = extract_organs(user_input, tamil_dict.keys(), is_tamil=True)
+        organ_en = extract_organs(user_input, eng_dict.keys())
+        organ_ta = extract_organs(user_input, tamil_dict.keys())
+        organ_hn = extract_organs(user_input, hindi_dict.keys())
 
         st.session_state.chat_history.append(("user", user_input))
 
@@ -357,9 +379,23 @@ def main():
             """
             image_path = get_image_path(finger.strip())
 
+        elif organ_hn:
+            finger = tamil_dict[organ_hn]
+            response = f"""
+                <h4 style='color:#FFD700;'>🟢 4. தொடு விரல் சிகிச்சை – 15 நிமிடம்</h4><br>
+                <span style='color:#FAFAD2; font-size:20px;'>
+                के लिए मुद्रा उंगली <b>{organ_hn.title()}</b> है <b> दांया हाथ {finger}
+                </span>
+            """
+            image_path = get_image_path(finger.strip())
+
+
         else:
             response = "🙏 Sorry, I don't have mudra information for that organ."
+        
 
+        st.session_state.scroll_to_result = time.time()
+        st.session_state.chat_history = []
         st.session_state.chat_history.append(("assistant", response))
         if image_path:
             st.session_state.chat_history.append(("image", image_path))
@@ -376,6 +412,11 @@ def main():
                 </span>
             """
             image_path = get_image_path(finger)
+        elif not is_tamil and is_hindi:
+            finger = hindi_dict[organ]
+            response = f"<h4 style='color:#FFD700;'>🟢 4. தொடு விரல் சிகிச்சை – 15 நிமிடம்</h4><br><span style='color:#FAFAD2; font-size:20px;'>के लिए मुद्रा उंगली <b>{organ.title()}</b> है <b> दांया हाथ {finger}</span>"
+            image_path = get_image_path(finger.strip())
+
 
         elif not is_tamil and organ in eng_dict:
             finger = eng_dict[organ]
@@ -391,6 +432,8 @@ def main():
             response = "🙏 Sorry, I don't have mudra information for that organ."
 
         if not st.session_state.chat_history or st.session_state.chat_history[-1][1] != response:
+            st.session_state.scroll_to_result = time.time()
+            st.session_state.chat_history = []
             st.session_state.chat_history.append(("assistant", response))
             if image_path:
                 st.session_state.chat_history.append(("image", image_path))
@@ -415,6 +458,8 @@ def main():
                    .replace("Mudhra Finger", "<span style='color:#90EE90; font-weight:700;'>Mudhra Finger</span>")
                    .replace("உடற்கூறு", "<span style='color:#90EE90; font-weight:700;'>உடற்கூறு</span>")
                    .replace("முத்திரை விரல்", "<span style='color:#90EE90; font-weight:700;'>முத்திரை விரல்</span>")
+                    .replace("अंग","<span style='color:#90EE90; font-weight:700;'>अंग</span>")
+                   .replace("मुद्रा उंगली", "<span style='color:#90EE90; font-weight:700;'>मुद्रा उंगली</span>")
             )
 
             st.markdown(
@@ -436,26 +481,54 @@ def main():
         else:
             st.markdown(f"<div style='color:white; font-size: 18px;'>{msg} </div>", unsafe_allow_html=True)
             
-    st.markdown("<div id='bottom-marker'></div>", unsafe_allow_html=True)
+    ts = st.session_state.get("scroll_to_result", None)
+    if ts:
+     marker_id = f"bottom-marker-{int(ts * 1000)}"
+    else:
+     marker_id = "bottom-marker-static"
 
-    scroll_script = """
-<script>
-const marker = window.parent.document.getElementById("bottom-marker");
-if(marker){ marker.scrollIntoView({ behavior: "smooth", block: "start" }); }
-</script>
-"""
-    components.html(scroll_script, height=0)
+# Render the marker into the page
+    st.markdown(f"<div id='{marker_id}'></div>", unsafe_allow_html=True)
+
+# If a timestamp trigger exists, inject JS that polls until the marker is present then scrolls
+    if ts:
+     scroll_js = f"""
+    <script>
+    (function() {{
+      const id = "{marker_id}";
+      let attempts = 0;
+      const maxAttempts = 30;   // 30 * 50ms = 1500ms max
+      const interval = setInterval(function() {{
+        attempts++;
+        const marker = window.parent.document.getElementById(id);
+        if (marker) {{
+          marker.scrollIntoView({{ behavior: "smooth", block: "start" }});
+          clearInterval(interval);
+        }} else if (attempts >= maxAttempts) {{
+          clearInterval(interval);
+        }}
+      }}, 50);
+    }})();
+    </script>
+    """
+     components.html(scroll_js, height=0)
+    # reset flag so future clicks create a new timestamp
+     st.session_state.scroll_to_result = None
 
     change_radio_option_size("English","30px")
     change_radio_option_size("Tamil","30px")
+    change_radio_option_size("Hindi","30px")
     change_radio_option_color("English",'orange')
     change_radio_option_color("Tamil",' orange')
+    change_radio_option_color("Hindi","orange")
 
     change_radio_option_font("English",'Segoe UI')
     change_radio_option_font("Tamil",'Segoe UI')
+    change_radio_option_font("Hindi","Segoe UI")
 
     change_radio_option_weight("English",'bold')
     change_radio_option_weight("Tamil",'bold')
+    change_radio_option_weight("Hindi",'bold')
     
 
 
@@ -463,4 +536,3 @@ if(marker){ marker.scrollIntoView({ behavior: "smooth", block: "start" }); }
 
 if __name__ == "__main__":
     main()
-
