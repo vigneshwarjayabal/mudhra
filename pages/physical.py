@@ -65,7 +65,7 @@ def display_therapy_script_sections(pre_mudra=True):
     if pre_mudra:
         if lang == "Tamil":
             st.markdown("""
-            <h2 style='color:#90EE90; text-align:center;'>🌿 முதியோர் நலன் காக்கும் தொடுசிகிச்சை 🌿</h2>
+            <h2 style='color:#90EE90; text-align:center;'>🌿 மூத்தவர்கள் நலம் மேம்பாட்டு நிகழ்வு 🌿</h2>
             <p style='font-size:18px; color:#FAFAD2; text-align:center;'>
                 நம்முடைய தொடு விரல் சிகிச்சை முறையை கீழ்கண்ட வகையில் தொகுப்பாக பயனாளர்களுக்கு சமர்ப்பிக்க உள்ளோம்<br><br>
                 <strong>மொத்த நேரம் – 35 முதல் 40 நிமிடங்கள்</strong>
@@ -99,6 +99,11 @@ def display_therapy_script_sections(pre_mudra=True):
 
             <h4 style='color:#FFD700;'>🟢 3. மிருக சத்த பயிற்சி – 5 நிமிடம்</h4>
             <p style='color:#FAFAD2;'>(ஒவ்வொரு சத்தமும் 5 முறை, 30 விநாடி)</p>
+            """, unsafe_allow_html=True)
+
+            st.video("Animal_Sound.mp4")
+
+            st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 மயில் – "அவ்-அவ்"</li>
                 <li>🐦 குயில் – "கூ...ஹூ..."</li>
@@ -148,6 +153,11 @@ def display_therapy_script_sections(pre_mudra=True):
 
             <h4 style='color:#FFD700;'>🟢 3. Animal Sound Exercise – 5 Minutes</h4>
             <p style='color:#FAFAD2;'>(Repeat each sound 5 times, 30 seconds each)</p>
+            """, unsafe_allow_html=True)
+
+            st.video("Animal_Sound.mp4")
+
+            st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 Peacock – "Av-Av"</li>
                 <li>🐦 Cuckoo – "Coo...Hoo..."</li>
@@ -173,7 +183,6 @@ def display_therapy_script_sections(pre_mudra=True):
             <h4 style='color:#FFD700;'>🟢 1. उंगली व्यायाम – 5 मिनट</h4>
             """, unsafe_allow_html=True)
 
-            
             st.video("Finger_Exercises.mp4")
 
             st.markdown("""
@@ -198,6 +207,11 @@ def display_therapy_script_sections(pre_mudra=True):
 
             <h4 style='color:#FFD700;'>🟢 3. जानवरों की आवाज का व्यायाम – 5 मिनट</h4>
             <p style='color:#FAFAD2;'>(प्रत्येक ध्वनि 5 बार, 30 सेकंड)</p>
+            """, unsafe_allow_html=True)
+
+            st.video("Animal_Sound.mp4")
+
+            st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 मोर – "अव-अव"</li>
                 <li>🐦 कोयल – "कू...हू..."</li>
@@ -212,7 +226,7 @@ def display_therapy_script_sections(pre_mudra=True):
             """, unsafe_allow_html=True)
 
     else:
-        # Post-mudra section
+        # Post-mudra section (unchanged)
         if lang == "Tamil":
             st.markdown("""
             <hr style='border:1px dashed #FAFAD2;'>
@@ -454,7 +468,7 @@ def main():
        
 
     organs = tamil_organs if is_tamil else hindi_organs if is_hindi else english_organs
-    box1, box2, box3, box4 = organs[:6], organs[6:12], organs[12:17], organs[17:]
+    box1, box2, box3, box4, box5 , box6 = organs[:6], organs[6:12], organs[12:18], organs[18:24] , organs[24:30], organs[30:35]
 
     def render_organ_box(organs_list):
      with st.container():
@@ -469,13 +483,16 @@ def main():
     st.markdown("</div>", unsafe_allow_html=True)
 
 
-    col1, col2 = st.columns(2, gap="large")
+    col1, col2 , col3 = st.columns(3, gap="large")
     with col1:
         render_organ_box(box1)
         render_organ_box(box2)
     with col2:
         render_organ_box(box3)
         render_organ_box(box4)
+    with col3:
+        render_organ_box(box5)
+        render_organ_box(box6)
 
     user_input = st.chat_input("Type your organ name in English or Tamil or Hindi...")
 
@@ -635,6 +652,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
