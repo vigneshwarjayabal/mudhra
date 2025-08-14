@@ -59,7 +59,7 @@ def get_image_path(finger_name):
 def display_therapy_script_sections(pre_mudra=True):
     lang = st.session_state.language
     video1_url = "https://drive.google.com/file/d/19TS07fdAesG5KIKBRDn3tLUXfh6BAbNx/preview"
-    video2_url = "https://drive.google.com/file/d/1OoU34EdDtIfekMSuCr-uhicmwi_yu2Xj/preview"
+    video2_url = "https://drive.google.com/file/d/1KmZH88YmVsI0ojbqJ1_0NN_q_XfXo2Ka/preview"
 
     st.markdown("""<div class='content-box'>""", unsafe_allow_html=True)
 
@@ -730,4 +730,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
