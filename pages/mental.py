@@ -58,6 +58,8 @@ def get_image_path(finger_name):
 
 def display_therapy_script_sections(pre_mudra=True):
     lang = st.session_state.language
+    video1_url = "https://drive.google.com/file/d/19TS07fdAesG5KIKBRDn3tLUXfh6BAbNx/preview"
+    video2_url = "https://drive.google.com/file/d/1OoU34EdDtIfekMSuCr-uhicmwi_yu2Xj/preview"
 
     st.markdown("""<div class='content-box'>""", unsafe_allow_html=True)
 
@@ -74,8 +76,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <h4 style='color:#FFD700;'>🟢 1. விரல் பயிற்சி – 5 நிமிடம்</h4>
             """, unsafe_allow_html=True)
 
-            video1_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Finger_Exercises.mp4"
-            st.markdown(f'<a href="{video1_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶ விரல் பயிற்சி வீடியோ </a>', unsafe_allow_html=True)
+            st.markdown(f"""
+<a href="{video1_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ விரல் பயிற்சிகள் வீடியோவைப் பாருங்கள்
+</a>
+""", unsafe_allow_html=True)
 
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
@@ -101,9 +110,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <p style='color:#FAFAD2;'>(ஒவ்வொரு சத்தமும் 5 முறை, 30 விநாடி)</p>
             """, unsafe_allow_html=True)
 
-             video2_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Animal-Sound.mp4"
-            st.markdown(f'<a href="{video2_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶ மிருக சத்த பயிற்சி வீடியோ </a>', unsafe_allow_html=True)
-
+            st.markdown(f"""
+<a href="{video2_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ மிருக சத்த பயிற்சி வீடியோவைப் பாருங்கள்
+</a>
+""", unsafe_allow_html=True)
 
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
@@ -131,9 +146,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <h4 style='color:#FFD700;'>🟢 1. Finger Exercises – 5 Minutes</h4>
             """, unsafe_allow_html=True)
 
-             video1_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Finger_Exercises.mp4"
-            st.markdown(f'<a href="{video1_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶ Finger Exercises Video  </a>', unsafe_allow_html=True)
-
+            st.markdown(f"""
+<a href="{video1_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ Watch Finger Exercises Video
+</a>
+""", unsafe_allow_html=True)
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>1. Fist clenching and releasing</li>
@@ -158,9 +179,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <p style='color:#FAFAD2;'>(Repeat each sound 5 times, 30 seconds each)</p>
             """, unsafe_allow_html=True)
 
-            video2_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Animal-Sound.mp4"
-            st.markdown(f'<a href="{video2_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶ Animal Sound Exercise Video </a>', unsafe_allow_html=True)
-
+            st.markdown(f"""
+<a href="{video2_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ Watch Animal Sound Video
+</a>
+""", unsafe_allow_html=True)
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 Peacock – "Av-Av"</li>
@@ -187,8 +214,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <h4 style='color:#FFD700;'>🟢 1. उंगली व्यायाम – 5 मिनट</h4>
             """, unsafe_allow_html=True)
 
-              video1_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Finger_Exercises.mp4"
-            st.markdown(f'<a href="{video1_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶  उंगली व्यायाम वीडियो </a>', unsafe_allow_html=True)
+            st.markdown(f"""
+<a href="{video1_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ उंगली व्यायाम वीडियो देखें
+</a>
+""", unsafe_allow_html=True)
 
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
@@ -214,8 +248,15 @@ def display_therapy_script_sections(pre_mudra=True):
             <p style='color:#FAFAD2;'>(प्रत्येक ध्वनि 5 बार, 30 सेकंड)</p>
             """, unsafe_allow_html=True)
 
-            video2_url = "https://raw.githubusercontent.com/vigneshwarjayabal/mudhra/main/Animal-Sound.mp4"
-            st.markdown(f'<a href="{video2_url}" target="_blank" style="text-decoration:none;color:blue;font-weight:bold;">▶  जानवरों की आवाज का व्यायाम वीडियो </a>', unsafe_allow_html=True)
+            st.markdown(f"""
+<a href="{video2_url}" target="_blank" style="
+    display:inline-block; padding:10px 15px;
+    background-color:#FFD700; color:black;
+    border-radius:8px; text-decoration:none;
+    font-weight:bold;">
+▶ पशु ध्वनि वीडियो देखें
+</a>
+""", unsafe_allow_html=True)
 
             st.markdown("""
             <ul style='color:#FAFAD2; font-size:17px;'>
@@ -689,4 +730,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
