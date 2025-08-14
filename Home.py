@@ -174,7 +174,7 @@ if st.session_state.language == "English":
     title_text = "🌟 Elderly Care Finger Touch Therapy  🖐️"
     slogan = "\"Natural Healing for Body and Mind.\""
 elif st.session_state.language == "Tamil":
-    title_text = "🌟 மூத்தோர் விரல் தொடுதல் சிகிச்சை 🖐️"
+    title_text = "🌟 முதியோர் நலன் காக்கும் தொடுசிகிச்சை 🖐️"
     slogan = "\"உடலும் மனதும் நலமடைய இயற்கை சிகிச்சை.\""
 else:
     title_text = "🌟 वृद्धजन देखभाल उंगली स्पर्श उपचार 🖐️"
@@ -279,3 +279,4 @@ for option in healing_options:
     change_radio_option_color(option,'orange')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
+
