@@ -53,7 +53,7 @@ def get_image_path(finger_name):
     }
 
     mapped = finger_map.get(finger_name.strip(), finger_name.lower())
-    filename = f"{mapped}.jpg"
+    filename = f"{mapped}.png"
     path = os.path.join("image", filename)
     return path if os.path.exists(path) else None
 # ------------------ Therapy Script Display Helper ------------------ #
@@ -702,6 +702,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
