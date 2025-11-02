@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 
 # -------------- Set Background --------------
 def set_bg():
-    with open("bg_image3.png", 'rb') as f:
+    with open("bg_image6.png", 'rb') as f:
         bg_data = f.read()
     encoded = base64.b64encode(bg_data).decode()
     st.markdown(
@@ -171,13 +171,13 @@ st.radio(
 
 # ---------- TITLE & SLOGAN ----------
 if st.session_state.language == "English":
-    title_text = "🌟 Elderly Care Finger Touch Therapy  🖐️"
+    title_text = "🌟 Ancient Siddhar's Natural Aligned Mudra  🖐️"
     slogan = "\"Natural Healing for Body and Mind.\""
 elif st.session_state.language == "Tamil":
-    title_text = "🌟 முதியோர் நலன் காக்கும் தொடுசிகிச்சை 🖐️"
+    title_text = "🌟 பண்டைய சித்தர்களின் இயற்கையான சீரமைக்கப்பட்ட முத்திரை 🖐️"
     slogan = "\"உடலும் மனதும் நலமடைய இயற்கை சிகிச்சை.\""
 else:
-    title_text = "🌟 वृद्धजन देखभाल उंगली स्पर्श उपचार 🖐️"
+    title_text = "🌟 प्राचीन सिद्ध की प्राकृतिक संरेखित मुद्रा 🖐️"
     slogan = "\"शरीर और मन के लिए प्राकृतिक उपचार.\""
 
     
@@ -279,4 +279,3 @@ for option in healing_options:
     change_radio_option_color(option,'orange')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
-
