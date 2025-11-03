@@ -492,7 +492,7 @@ def main():
 
     with col_right:
         st.markdown(
-            f"<p style='font-size:30px; color:orange; font-weight:bold; font-family:Segoe UI;'>Choice Your Language</p>",
+            f"<p style='font-size:30px; color:#FAFAD2; font-weight:bold; font-family:Segoe UI;'>Choice Your Language</p>",
             unsafe_allow_html=True
         )
         st.session_state.language = st.radio(
@@ -712,9 +712,9 @@ def main():
     change_radio_option_size("English","30px")
     change_radio_option_size("Tamil","30px")
     change_radio_option_size("Hindi","30px")
-    change_radio_option_color("English",'orange')
-    change_radio_option_color("Tamil",' orange')
-    change_radio_option_color("Hindi","orange")
+    change_radio_option_color("English",'#FAFAD2')
+    change_radio_option_color("Tamil",'#FAFAD2')
+    change_radio_option_color("Hindi","#FAFAD2")
 
     change_radio_option_font("English",'Segoe UI')
     change_radio_option_font("Tamil",'Segoe UI')
@@ -730,3 +730,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
