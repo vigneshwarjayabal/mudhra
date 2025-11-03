@@ -24,14 +24,14 @@ def set_bg():
             text-align: center;
             font-size: 5rem;
             font-weight: bold;
-            color: #FAFAD2;
+            color: #FFD700;
             margin-top: 50px;
         }}
 
         .slogan-text {{
             text-align: center;
             font-size: 2rem;
-            color: #f5f5dc;
+            color: #FFD700;
             margin-bottom: 50px;
         }}
 
@@ -81,7 +81,7 @@ def set_bg():
         .info-text {{
             text-align: center;
             font-size: 2rem;
-            color: #f5f5dc;
+            color: #FFD700;
             margin-bottom: 50px;
         }}
 
@@ -90,7 +90,7 @@ def set_bg():
         unsafe_allow_html=True
     )
 
-def change_radio_option_size(option_text,new_size='40px'):
+def change_radio_option_size(option_text,new_size='60px'):
     js = f"""
             <script>
             const elems = window.parent.document.querySelectorAll('*');
@@ -174,7 +174,7 @@ if st.session_state.language == "English":
     title_text = "🌟 Ancient Siddhar's Natural Aligned Mudra  🖐️"
     slogan = "\"Natural Healing for Body and Mind.\""
 elif st.session_state.language == "Tamil":
-    title_text = "🌟 பண்டைய சித்தர்களின் இயற்கையான சீரமைக்கப்பட்ட முத்திரை 🖐️"
+    title_text = "🌟 Ancient Siddhar's Natural Aligned Mudra 🖐️"
     slogan = "\"உடலும் மனதும் நலமடைய இயற்கை சிகிச்சை.\""
 else:
     title_text = "🌟 प्राचीन सिद्ध की प्राकृतिक संरेखित मुद्रा 🖐️"
@@ -256,9 +256,9 @@ if st.session_state.get("show_options", False):
 
 
 
-change_radio_option_size("English","40px")
-change_radio_option_size("Tamil","40px")
-change_radio_option_size("Hindi","40px")
+change_radio_option_size("English","50px")
+change_radio_option_size("Tamil","50px")
+change_radio_option_size("Hindi","50px")
 
 
 change_radio_option_color("English",'orange')
@@ -275,7 +275,7 @@ change_radio_option_weight("Hindi",'bold')
 
 
 for option in healing_options:
-    change_radio_option_size(option,'40px')
-    change_radio_option_color(option,'orange')
+    change_radio_option_size(option,"70px")
+    change_radio_option_color(option,'#FFA500')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
