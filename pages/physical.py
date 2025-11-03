@@ -338,7 +338,7 @@ def set_bg():
             font-size: 1.3rem;
             font-weight: 500;
             text-align: center;
-            color:#FFD700;
+            color: #FFD700;
             margin-bottom: 1.5rem;
         }}
 
@@ -702,6 +702,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
