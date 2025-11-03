@@ -338,7 +338,7 @@ def set_bg():
             font-size: 1.3rem;
             font-weight: 500;
             text-align: center;
-            color:#800000;
+            color:#FFD700;
             margin-bottom: 1.5rem;
         }}
 
@@ -683,9 +683,9 @@ def main():
     change_radio_option_size("English","30px")
     change_radio_option_size("Tamil","30px")
     change_radio_option_size("Hindi","30px")
-    change_radio_option_color("English",'orange')
-    change_radio_option_color("Tamil",' orange')
-    change_radio_option_color("Hindi","orange")
+    change_radio_option_color("English",'#FAFAD2')
+    change_radio_option_color("Tamil",'#FAFAD2')
+    change_radio_option_color("Hindi","#FAFAD2")
 
     change_radio_option_font("English",'Segoe UI')
     change_radio_option_font("Tamil",'Segoe UI')
@@ -702,4 +702,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
