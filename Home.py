@@ -24,14 +24,14 @@ def set_bg():
             text-align: center;
             font-size: 5rem;
             font-weight: bold;
-            color: #FFD700;
+            color: #FAFAD2;
             margin-top: 50px;
         }}
 
         .slogan-text {{
             text-align: center;
             font-size: 2rem;
-            color: #FFD700;
+            color: #FAFAD2;
             margin-bottom: 50px;
         }}
 
@@ -43,7 +43,7 @@ def set_bg():
         .custom-radio-title {{
             font-size: 40px;
             font-weight: bold;
-            color: orange;
+            color: #FAFAD2;
             margin-bottom: 10px;
             font-family : 'Segoe UI' ;
         }}
@@ -237,7 +237,7 @@ with col_spacer:
 if st.session_state.get("show_options", False):
     with col_choice:
         st.markdown(
-            f"<p style='font-size:28px; color:orange; font-weight:bold; font-family:Segoe UI;'>{healing_prompt}</p>",
+            f"<p style='font-size:28px; color:#FAFAD2; font-weight:bold; font-family:Segoe UI;'>{healing_prompt}</p>",
             unsafe_allow_html=True
         )
 
@@ -261,9 +261,9 @@ change_radio_option_size("Tamil","50px")
 change_radio_option_size("Hindi","50px")
 
 
-change_radio_option_color("English",'#FFD700')
-change_radio_option_color("Tamil",'#FFD700')
-change_radio_option_color("Hindi",'#FFD700')
+change_radio_option_color("English",'#FAFAD2')
+change_radio_option_color("Tamil",'#FAFAD2')
+change_radio_option_color("Hindi",'#FAFAD2')
 
 change_radio_option_font("English",'Segoe UI')
 change_radio_option_font("Tamil",'Segoe UI')
@@ -276,6 +276,6 @@ change_radio_option_weight("Hindi",'bold')
 
 for option in healing_options:
     change_radio_option_size(option,"70px")
-    change_radio_option_color(option,'#FFA500')
+    change_radio_option_color(option,'#FAFAD2')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
