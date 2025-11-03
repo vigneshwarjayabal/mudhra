@@ -24,14 +24,14 @@ def set_bg():
             text-align: center;
             font-size: 5rem;
             font-weight: bold;
-            color: #FAFAD2;
+            color: #FFD700;
             margin-top: 50px;
         }}
 
         .slogan-text {{
             text-align: center;
             font-size: 2rem;
-            color: #FAFAD2;
+            color: #FFD700;
             margin-bottom: 50px;
         }}
 
@@ -279,3 +279,4 @@ for option in healing_options:
     change_radio_option_color(option,'#FAFAD2')
     change_radio_option_font(option,'Segoe UI')
     change_radio_option_weight(option,'bold')
+
