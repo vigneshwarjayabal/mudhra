@@ -261,9 +261,9 @@ change_radio_option_size("Tamil","50px")
 change_radio_option_size("Hindi","50px")
 
 
-change_radio_option_color("English",'orange')
-change_radio_option_color("Tamil",' orange')
-change_radio_option_color("Hindi",' orange')
+change_radio_option_color("English",'#FFD700')
+change_radio_option_color("Tamil",'#FFD700')
+change_radio_option_color("Hindi",'#FFD700')
 
 change_radio_option_font("English",'Segoe UI')
 change_radio_option_font("Tamil",'Segoe UI')
