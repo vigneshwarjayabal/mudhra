@@ -68,7 +68,7 @@ def display_therapy_script_sections(pre_mudra=True):
         if lang == "Tamil":
             st.markdown("""
             <h2 style='color:#90EE90; text-align:center;'>🌿 மூத்தவர்கள் நலம் மேம்பாட்டு நிகழ்வு 🌿</h2>
-            <p style='font-size:18px; color#800000; text-align:center;'>
+            <p style='font-size:18px; color#FAFAD2; text-align:center;'>
                 நம்முடைய தொடு விரல் சிகிச்சை முறையை கீழ்கண்ட வகையில் தொகுப்பாக பயனாளர்களுக்கு சமர்ப்பிக்க உள்ளோம்<br><br>
                 <strong>மொத்த நேரம் – 35 முதல் 40 நிமிடங்கள்</strong>
             </p>
@@ -88,23 +88,23 @@ def display_therapy_script_sections(pre_mudra=True):
 """, unsafe_allow_html=True)
 
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>1. விரல் மூடி திரத்தல்</li>
                 <li>2. வணங்கி விரித்தல்</li>
                 <li>3. உள்ளங்கை மேல் நோக்கி, கீழ் நோக்கி, பக்க வாட்டில்</li>
                 <li>4. விரல் இடுக்கு கலை உரசுதல்</li>
                 <li>5. கைகளை மெதுவாக தட்டுதல்</li>
             </ul>
-            <p style='color:#800000;'>🎯 நரம்பு இயக்கம், மூட்டு நெகிழ்வு, சுறுசுறுப்பு</p>
+            <p style='color:#FAFAD2;'>🎯 நரம்பு இயக்கம், மூட்டு நெகிழ்வு, சுறுசுறுப்பு</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 2. முக (அஷ்ட கோணல்) பயிற்சி – 5 நிமிடம்</h4>
-            <p style='color:#800000;'>(சத்தமின்றி வாயை திறந்து முக தசைகளை இயக்குதல்)</p>
+            <p style='color:#FAFAD2;'>(சத்தமின்றி வாயை திறந்து முக தசைகளை இயக்குதல்)</p>
             <p style='font-size:20px; color:#FAFAD2; text-align:center;'>
             🔠 உயிரெழுத்துகள்: <br>
             அ – ஆ – இ – ஈ – உ – ஊ – எ – ஏ – ஐ – ஒ – ஓ – ஔ
             </p>
-            <p style='color:#800000;'>🎯 முக தசை இயக்கம், முக இருக்கம் குறையும் பக்கவாதம் தடுப்பு</p>
+            <p style='color:#FAFAD2;'>🎯 முக தசை இயக்கம், முக இருக்கம் குறையும் பக்கவாதம் தடுப்பு</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 3. மிருக சத்த பயிற்சி – 5 நிமிடம்</h4>
@@ -122,7 +122,7 @@ def display_therapy_script_sections(pre_mudra=True):
 """, unsafe_allow_html=True)
 
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 மயில் – "அவ்-அவ்"</li>
                 <li>🐦 குயில் – "கூ...ஹூ..."</li>
                 <li>🐦 காக்கா – "கா...கா..."</li>
@@ -138,7 +138,7 @@ def display_therapy_script_sections(pre_mudra=True):
         elif lang == "English":
             st.markdown("""
             <h2 style='color:#90EE90; text-align:center;'>🌿 Elder Wellness Program 🌿</h2>
-            <p style='font-size:18px; color:#800000; text-align:center;'>
+            <p style='font-size:18px; color:#FAFAD2; text-align:center;'>
                 Our Finger Touch Therapy is presented as follows:<br><br>
                 <strong>Total Duration – 35 to 40 Minutes</strong>
             </p>
@@ -157,23 +157,23 @@ def display_therapy_script_sections(pre_mudra=True):
 </a>
 """, unsafe_allow_html=True)
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>1. Fist clenching and releasing</li>
                 <li>2. Stretching fingers forward and backward</li>
                 <li>3. Palm facing up, down, and sideways</li>
                 <li>4. Finger interlocking and rubbing</li>
                 <li>5. Gentle hand tapping</li>
             </ul>
-            <p style='color:#800000;'>🎯 Improves nerve function, joint flexibility, and agility</p>
+            <p style='color:#FAFAD2;'>🎯 Improves nerve function, joint flexibility, and agility</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 2. Facial (Eight Angles) Exercise – 5 Minutes</h4>
-            <p style='color:#800000;'>(Move facial muscles silently by opening the mouth)</p>
+            <p style='color:#FAFAD2;'>(Move facial muscles silently by opening the mouth)</p>
             <p style='font-size:20px; color:#FAFAD2; text-align:center;'>
             🔠 Vowels: <br>
             A – AA – I – EE – U – OO – E – AE – AI – O – OA – AU
             </p>
-            <p style='color:#800000;'>🎯 Strengthens facial muscles, reduces sagging, prevents paralysis</p>
+            <p style='color:#FAFAD2;'>🎯 Strengthens facial muscles, reduces sagging, prevents paralysis</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 3. Animal Sound Exercise – 5 Minutes</h4>
@@ -190,7 +190,7 @@ def display_therapy_script_sections(pre_mudra=True):
 </a>
 """, unsafe_allow_html=True)
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 Peacock – "Av-Av"</li>
                 <li>🐦 Cuckoo – "Coo...Hoo..."</li>
                 <li>🐦 Crow – "Caw...Caw..."</li>
@@ -200,13 +200,13 @@ def display_therapy_script_sections(pre_mudra=True):
                 <li>🐅 Tiger – "Rrr..."</li>
                 <li>🐸 Frog – "Kk...Kk...Kk..."</li>
             </ul>
-            <p style='color:#ADFF2F;'>🎯 Improves breathing, vocal practice, and confidence</p>
+            <p style='color:#FAFAD2;'>🎯 Improves breathing, vocal practice, and confidence</p>
             """, unsafe_allow_html=True)
 
         elif lang == "Hindi":
             st.markdown("""
             <h2 style='color:#90EE90; text-align:center;'>🌿 वरिष्ठ नागरिक स्वास्थ्य कार्यक्रम 🌿</h2>
-            <p style='font-size:18px; color:#800000; text-align:center;'>
+            <p style='font-size:18px; color:#FAFAD2; text-align:center;'>
                 हमारी उंगली स्पर्श चिकित्सा इस प्रकार प्रस्तुत की जाती है:<br><br>
                 <strong>कुल समय – 35 से 40 मिनट</strong>
             </p>
@@ -226,23 +226,23 @@ def display_therapy_script_sections(pre_mudra=True):
 """, unsafe_allow_html=True)
 
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>1. मुट्ठी बांधना और खोलना</li>
                 <li>2. आगे और पीछे उंगलियों को खींचना</li>
                 <li>3. हथेली ऊपर, नीचे और बगल की ओर करना</li>
                 <li>4. उंगलियों को इंटरलॉक कर रगड़ना</li>
                 <li>5. धीरे से हाथ थपथपाना</li>
             </ul>
-            <p style='color:#800000;'>🎯 नसों का कार्य सुधार, जोड़ों की लचीलापन, फुर्ती</p>
+            <p style='color:#FAFAD2;'>🎯 नसों का कार्य सुधार, जोड़ों की लचीलापन, फुर्ती</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 2. चेहरे का (आठ कोण) व्यायाम – 5 मिनट</h4>
-            <p style='color:#800000;'>(मुंह खोलकर चुपचाप चेहरे की मांसपेशियों को हिलाना)</p>
+            <p style='color:#FAFAD2;'>(मुंह खोलकर चुपचाप चेहरे की मांसपेशियों को हिलाना)</p>
             <p style='font-size:20px; color:#FAFAD2; text-align:center;'>
             🔠 स्वर: <br>
             अ – आ – इ – ई – उ – ऊ – ए – ऐ – ओ – औ
             </p>
-            <p style='color:#800000;'>🎯 चेहरे की मांसपेशियां मजबूत, झुर्रियां कम, लकवा रोकथाम</p>
+            <p style='color:#FAFAD2;'>🎯 चेहरे की मांसपेशियां मजबूत, झुर्रियां कम, लकवा रोकथाम</p>
             <hr style='border:1px dashed #FAFAD2;'>
 
             <h4 style='color:#FFD700;'>🟢 3. जानवरों की आवाज का व्यायाम – 5 मिनट</h4>
@@ -260,7 +260,7 @@ def display_therapy_script_sections(pre_mudra=True):
 """, unsafe_allow_html=True)
 
             st.markdown("""
-            <ul style='color:#800000; font-size:17px;'>
+            <ul style='color:#FAFAD2; font-size:17px;'>
                 <li>🦚 मोर – "अव-अव"</li>
                 <li>🐦 कोयल – "कू...हू..."</li>
                 <li>🐦 कौआ – "का...का..."</li>
@@ -279,33 +279,33 @@ def display_therapy_script_sections(pre_mudra=True):
             st.markdown("""
             <hr style='border:1px dashed #FAFAD2;'>
             <h4 style='color:#FFD700;'>🟢 5. இசை சிகிச்சை – 5 நிமிடம்</h4>
-            <p style='color:#800000; font-size:17px;'>
+            <p style='color:#FAFAD2; font-size:17px;'>
             இயற்கையான இசைகள் / ஆதார இசைகள்<br><br>
             (கண் மூடிக் கேட்க வேண்டும்)
             </p>
-            <p style='color:#800000;'>🎯 மன நிம்மதி, மன அழுத்தம் குறைப்பு</p>
+            <p style='color:#FAFAD2;'>🎯 மன நிம்மதி, மன அழுத்தம் குறைப்பு</p>
             """, unsafe_allow_html=True)
 
         elif lang == "English":
             st.markdown("""
             <hr style='border:1px dashed #FAFAD2;'>
             <h4 style='color:#FFD700;'>🟢 5. Music Therapy – 5 Minutes</h4>
-            <p style='color:#800000; font-size:17px;'>
+            <p style='color:#FAFAD2; font-size:17px;'>
             Natural sounds / background instrumental music<br><br>
             (Listen with eyes closed)
             </p>
-            <p style='color:#800000;'>🎯 Promotes relaxation, reduces stress</p>
+            <p style='color:##FAFAD2;'>🎯 Promotes relaxation, reduces stress</p>
             """, unsafe_allow_html=True)
 
         elif lang == "Hindi":
             st.markdown("""
             <hr style='border:1px dashed #FAFAD2;'>
             <h4 style='color:#FFD700;'>🟢 5. संगीत चिकित्सा – 5 मिनट</h4>
-            <p style='color:#800000; font-size:17px;'>
+            <p style='color:#FAFAD2; font-size:17px;'>
             प्राकृतिक ध्वनियां / पृष्ठभूमि वाद्य संगीत<br><br>
             (आंखें बंद करके सुनें)
             </p>
-            <p style='color:#800000;'>🎯 मानसिक शांति, तनाव में कमी</p>
+            <p style='color:#FAFAD2;'>🎯 मानसिक शांति, तनाव में कमी</p>
             """, unsafe_allow_html=True)
 
         
