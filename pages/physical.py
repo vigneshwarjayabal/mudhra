@@ -492,7 +492,7 @@ def main():
 
     with col_right:
         st.markdown(
-            f"<p style='font-size:30px; color:orange; font-weight:bold; font-family:Segoe UI;'>Choice Your Language</p>",
+            f"<p style='font-size:30px; color:#FAFAD2; font-weight:bold; font-family:Segoe UI;'>Choice Your Language</p>",
             unsafe_allow_html=True
         )
         st.session_state.language = st.radio(
@@ -702,5 +702,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
